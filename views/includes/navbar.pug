@@ -1,0 +1,71 @@
+nav.navbar
+  ul
+    li
+      img#logo-img.inverted(src='img/logo.png', width='75', height='75', alt='AR Logo')
+      if (path == '/')
+        a#logo.active(href='/' onclick='return false')
+          span.outline-white Alessandro
+          |  Romanelli
+      else
+        a#logo(href='/')
+          span.outline-white Alessandro
+          |  Romanelli
+  ul.relative
+    li
+      a(href='https://www.usi.ch/', target='_blank', rel='noopener') USI
+    li
+      if (path == '/project')
+        a.active(href='/project' onclick='return false') THIS PROJECT
+      else
+        a(href='/project') THIS PROJECT
+    li
+      a#more(href='#') MORE
+      i.icon.more
+.sidebar.hidden
+  ul.social-links.m-0
+    li
+      a.p-0(href='https://www.facebook.com/ltromanelli', target='_blank', rel='noopener')
+        .box
+          img(src='img/facebook.svg', alt='Facebook Logo', height='30')
+    li
+      a.p-0(href='https://twitter.com/redbyteWant3D', target='_blank', rel='noopener')
+        .box
+          img(src='img/twitter.svg', alt='Twitter Logo', height='30')
+    li
+      a.p-0(href='https://plus.google.com/u/0/+AlessandroRomanelli', target='_blank', rel='noopener')
+        .box
+          img(src='img/google.svg', alt='Google+ Logo', height='30')
+    li
+      a.p-0(href='https://www.linkedin.com/in/alessandro-romanelli-a619a814b/', target='_blank', rel='noopener')
+        .box
+          img(src='img/linkedin.png', alt='Linkedin Logo', height='30')
+    li
+      a.p-0(href='mailto:romanea@usi.ch')
+        .box
+          img(src='img/email.svg', alt='Email Logo', height='30')
+  hr
+  ul.nav-menu
+      if (path == '/about')
+        li.active
+          a(href='/about' onclick='return false') ABOUT ME
+      else 
+        li
+          a(href='/about') ABOUT ME
+      if (path == '/past')
+        li.active
+          a(href='/past' onclick='return false') THE PAST
+      else
+        li
+          a(href='/past') THE PAST
+      if (path == '/future')
+        li.active
+          a(href='/future' onclick='return false') THE FUTURE
+      else
+        li
+          a(href='/future') THE FUTURE
+  hr
+  img.name-logo(src='img/logo.png', alt='AR Logo', width='125', height='125')
+  footer
+    p
+      a(href='http://alessandroromanelli.herokuapp.com/', target='_blank', rel='noopener')
+        small © Alessandro Romanelli 2017

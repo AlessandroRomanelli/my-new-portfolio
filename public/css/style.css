@@ -1,0 +1,741 @@
+/* ============== Importing custom fonts ============== */
+
+@font-face {
+  font-family : "GZA Font";
+  src         : url(../fonts/gza-seminegra-webfont.ttf);
+}
+
+@font-face {
+  font-family : "Relative";
+  src         : url(../fonts/Relative-Book.ttf);
+}
+
+@font-face {
+  font-family : "Founders";
+  src         : url(../fonts/FoundersGroteskMonoWeb-Medium.woff);
+}
+
+@font-face {
+  font-family : "Grotesk";
+  src         : url(../fonts/NHaasGroteskDSStd-75Bd.woff);
+}
+
+@font-face {
+  font-family : 'FontAwesome';
+  font-style  : normal;
+  font-weight : normal;
+  src         : url('../fonts/fontawesome-webfont.eot?v=4.7.0');
+  src         : url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),
+                url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'),
+                url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'),
+                url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),
+                url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+/* ============== Helper classes ============== */
+
+.p-0 {
+  padding : 0;
+}
+
+.py-0 {
+  padding : 0 auto;
+}
+
+.px-0 {
+  padding : auto 0;
+}
+
+.m-0 {
+  margin : 0;
+}
+
+.mx-0 {
+  margin : auto 0;
+}
+
+.my-0 {
+  margin : 0 auto;
+}
+
+.text-white {
+  color : #fff;
+}
+
+.text-black {
+  color : #000;
+}
+
+.bg-dark {
+  background-color : #343a40;
+}
+
+.gza {
+  font-family : "GZA Font";
+}
+
+.relative {
+  font-family : "Relative";
+}
+
+a:link,
+a:visited {
+  position        : relative;
+  color           : inherit;
+  text-decoration : none;
+}
+
+.active {
+  color           : white;
+  opacity         : 1;
+  text-decoration : underline;
+  font-size       : 1.05em;
+  font-weight     : bold;
+  cursor          : default;
+}
+
+.active:hover::before {
+  height : 0;
+}
+
+.outline-white {
+  color       : black;
+  text-shadow : 1px 1px 0 white,
+                1px 0 0 white,
+                1px -1px 0 white,
+                0 1px 0 white,
+                0 -1px 0 white,
+                -1px 1px 0 white,
+                -1px 0 0 white,
+                -1px -1px 0 white;
+}
+
+.outline-black {
+  color       : white;
+  text-shadow : 1px 1px 0 black,
+                1px 0 0 black,
+                1px -1px 0 black,
+                0 1px 0 black,
+                0 -1px 0 black,
+                -1px 1px 0 black,
+                -1px 0 0 black,
+                -1px -1px 0 black;
+}
+
+.more:before {
+  content : "\f0c9";
+}
+
+.less:before {
+  content : "\f00d";
+}
+
+.invert-bg {
+  background-color : white;
+}
+
+.inverted {
+  filter : invert(1);
+}
+
+::-moz-selection {
+  color: black;
+  color: rgba(0,0,0,0.75);
+  background: #fff;
+  background: rgba(255,255,255,0.25);
+}
+
+::selection {
+  color: black;
+  color: rgba(0,0,0,0.75);
+  background: #fff;
+  background: rgba(255,255,255,0.25);
+}
+
+/**
+ * ==================================================================
+ * ==================== Containers definition =======================
+ * ==================================================================
+ */
+
+.sidebar {
+  z-index          : 5;
+  box-sizing       : border-box;
+  position         : fixed;
+  top              : 0;
+  right            : 0;
+  width            : 20%;
+  height           : 100%;
+  padding-top      : 107px;
+  background-color : whitesmoke;
+  transition       : 0.25s ease-in-out;
+}
+
+.sidebar hr {
+  margin : 25px 20px 0;
+}
+
+.hidden {
+  right : -20%;
+}
+
+.container {
+  position : relative;
+  width    : 100%;
+  margin   : 0 auto;
+}
+
+.background {
+  position : relative;
+  width    : 100vw;
+  height   : 100vh;
+  margin   : 0;
+}
+
+.background::before {
+  content         : '';
+  position        : absolute;
+  top             : -50px;
+  right           : 0;
+  bottom          : 0;
+  left            : -10px;
+  background      : none;
+  background-size : cover;
+  filter          : blur(3px) grayscale(0.75) brightness(0.4);
+}
+
+#home-bg.background::before {
+  background        : url(../img/background2.jpg) no-repeat 100% 20%;
+  background-size   : 115%;
+}
+
+#project-bg.background::before {
+  background        : url(../img/background1.jpg) no-repeat center;
+  background-size   : cover;
+}
+
+#about-bg.background::before {
+  background      : url(../img/background3-1.jpg) no-repeat 0% 25%;
+  background-size : 110%;
+}
+
+#past-bg.background::before {
+  background      : url(../img/background4.jpg) no-repeat 0% 50%;
+  background-size : cover;
+}
+
+#future-bg.background::before {
+  background      : url(../img/background5.jpg) no-repeat 30% 30%;
+  background-size : 120%;
+}
+
+.caption {
+  position  : absolute;
+  top       : 50%;
+  left      : 5%;
+  width     : 75vw;
+  min-width : 1000px;
+  transform : translateY(-50%);
+}
+
+.social-links {
+  position   : relative;
+  top        : 15px;
+  right      : 15px;
+  text-align : center;
+}
+
+.box {
+  display            : inline-block;
+  position           : relative;
+  height             : 30px;
+  opacity            : 0.75;
+  border             : 1px solid rgba(255, 255, 255, 0);
+  -webkit-transition : 0.75s ease-in-out;
+  transition         : 0.75s ease-in-out;
+}
+
+.box:hover {
+  opacity : 1;
+}
+
+.box::after,
+.box::before {
+  z-index           : 3;
+  content           : '';
+  box-sizing        : border-box;
+  position          : absolute;
+  top               : 0;
+  left              : 0;
+  width             : 100%;
+  height            : 100%;
+  -webkit-transform : scale(0);
+  transition        : 0.75s ease-in-out;
+}
+
+.box::before {
+  border-bottom            : 1px solid #333;
+  border-left              : 1px solid #333;
+  -webkit-transform-origin : 0 100%;
+}
+
+.box::after {
+  border-top               : 1px solid #333;
+  border-right             : 1px solid #333;
+  -webkit-transform-origin : 100% 0%;
+}
+
+.box:hover::after,
+.box:hover::before {
+  -webkit-transform : scale(1);
+}
+
+/**
+ * ==================================================================
+ * ========================== NAV STYLE =============================
+ * ==================================================================
+ */
+
+nav {
+  z-index    : 10;
+  position   : fixed;
+  top        : 0;
+  width      : 100%;
+  transition : 0.25s ease-in-out;
+}
+
+nav ul {
+  height       : 75px;
+  margin-right : 5%;
+  align-items  : center;
+  line-height  : 75px;
+}
+
+nav ul:first-child {
+  float : left;
+}
+
+nav ul:first-child>li {
+  font-size : 2em;
+}
+
+nav ul:last-child {
+  float : right;
+}
+
+nav li {
+  display     : inline-block;
+  position    : relative;
+  height      : 75px;
+  margin-left : 3rem;
+  color       : whitesmoke;
+  font-size   : 1.15em;
+  font-weight : lighter;
+  list-style  : none;
+  transition  : 0.25s ease-in-out;
+}
+
+nav li:first-child {
+  margin-left : 0;
+}
+
+nav img {
+  vertical-align : middle;
+}
+
+nav li>a {
+  display  : inline;
+  position : relative;
+}
+
+nav li>a::before {
+  content          : '';
+  position         : absolute;
+  bottom           : 0;
+  width            : 105%;
+  height           : 0;
+  opacity          : 0;
+  background-color : white;
+  transform        : translateX(-2.5%);
+  transition       : 0.25s ease-in-out;
+}
+
+nav li.text-black>a::before {
+  background-color : black;
+  transition       : 0.25s ease-in-out;
+}
+
+.nav-menu a:hover::before,
+nav li>a:hover::before {
+  height  : 1px;
+  opacity : 1;
+}
+
+/**
+ * ==================================================================
+ * ======================== FOOTER  STYLE ===========================
+ * ==================================================================
+ */
+
+
+footer {
+  position   : absolute;
+  bottom     : 0;
+  width      : 100%;
+  color      : gray;
+  text-align : center;
+}
+
+footer p {
+  transform  : translateY(0);
+  opacity: 0.75;
+  transition : 0.25 ease-in-out;
+}
+
+footer p:hover {
+  opacity : 1;
+}
+
+footer p small {
+  text-align : center;
+}
+
+body {
+  margin           : 0;
+  overflow         : hidden;
+  background-color : black;
+  font-family      : 'Open Sans',
+                     sans-serif;
+}
+
+/**
+ * ==================================================================
+ * ======================== MAIN  CONTENT ===========================
+ * ==================================================================
+ */
+
+.description {
+  font-family : "Grotesk";
+  font-size   : 5rem;
+  font-weight : lighter;
+}
+
+.caption a:active,
+.caption a:hover,
+.caption a:link,
+.caption a:visited {
+  display         : inline-block;
+  position        : relative;
+  color           : inherit;
+  text-decoration : none;
+}
+
+.caption>.description a::before {
+  z-index    : -1;
+  content    : '';
+  position   : absolute;
+  bottom     : 7px;
+  width      : 100%;
+  height     : 10px;
+  background : linear-gradient(
+                 110deg,
+                 #e1f549,
+                 #29d0be,
+                 #6cb8ea,
+                 #ff5959
+               );
+  transition : 0.25s ease-in-out;
+}
+
+.caption a:hover::before {
+  height : 20px;
+}
+
+.hint {
+  opacity        : 0.05;
+  text-transform : uppercase;
+  font-family    : "relative";
+  letter-spacing : 3px;
+  transition     : 0.25s ease-in-out;
+}
+
+.hint:hover {
+  opacity : 0.15;
+}
+
+.hint a:hover {
+  cursor : default;
+}
+
+.project-description {
+  padding-right : 20px;
+  font-family   : "Grotesk";
+  font-size     : 2.5rem;
+  font-weight   : lighter;
+}
+
+.caption>.project-description a::before {
+  bottom : 5px;
+  height : 5px;
+}
+
+.caption>.project-description a:hover::before {
+  height : 10px;
+}
+
+.caption>.about-description {
+  padding-right : 20px;
+  font-family   : "Grotesk";
+  font-size     : 2rem;
+  font-weight   : lighter;
+}
+
+.caption>.about-description a::before {
+  bottom : 2px;
+  height : 5px;
+}
+
+.caption>.about-description a:hover::before {
+  height : 10px;
+}
+
+.social-links li {
+  display       : inline-block;
+  position      : relative;
+  padding-right : 10px;
+  opacity       : 0.75;
+  filter        : grayscale(1);
+  list-style    : none;
+  transition    : 0.25s ease-in-out;
+}
+
+.social-links li:hover {
+  opacity : 1;
+  filter  : grayscale(0);
+}
+
+.icon {
+  display     : inline-block;
+  position    : relative;
+  width       : 21px;
+  height      : 21px;
+  margin-left : 5px;
+  font        : normal normal normal 14px/1 "FontAwesome";
+  font-size   : inherit;
+}
+
+.question {
+  text-transform : uppercase;
+  font-size      : 0.9em;
+  letter-spacing : 10px;
+}
+
+.flex-container {
+  display         : inline-flex;
+  width           : 95%;
+  margin-top      : 10px;
+  align-items     : flex-start;
+  flex-direction  : row;
+  justify-content : space-around;
+}
+
+.separator {
+  margin: 0 10px;
+  width             : 4px;
+  height            : 300px;
+  opacity           : 0.5;
+  background        : linear-gradient(
+                        180deg,
+                        #e1f549,
+                        #29d0be,
+                        #6cb8ea,
+                        #ff5959
+                      );
+  background-size   : 800% 800%;
+  align-self        : center;
+  -moz-animation    : changing-gradient 5s ease infinite;
+  -webkit-animation : changing-gradient 5s ease infinite;
+  animation         : changing-gradient 5s ease infinite;
+}
+
+.flex-item {
+  max-width  : 275px;
+  padding: 20px;
+  border-radius: 10px;
+  filter     : grayscale(1);
+  text-align : center;
+  align-self : auto;
+  transition : 0.25s ease-in-out;
+}
+
+.flex-item:hover {
+  filter : grayscale(0);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.flex-item small {
+  text-transform : uppercase;
+  letter-spacing : 1px;
+}
+
+.flex-item sup {
+  font-size : 0.5em;
+}
+
+.flex-item p.item-title {
+  margin-bottom  : 0;
+  text-transform : uppercase;
+  font-family    : "Grotesk";
+}
+
+.flex-item p:not(.item-title) {
+  text-align : justify;
+}
+
+.flex-item q {
+  text-align : center;
+}
+
+.flex-item img {
+  opacity    : 0.5;
+  transition : 0.25s ease-in-out;
+}
+
+.flex-item:hover img {
+  opacity : 1;
+}
+
+/**
+ * ==================================================================
+ * ======================== SIDE NAV MENU ===========================
+ * ==================================================================
+ */
+
+.nav-menu {
+  margin         : 47px auto;
+  padding        : 0 30px;
+  text-align     : right;
+  font-family    : 'Relative';
+  font-size      : 0.8em;
+  letter-spacing : 3px;
+  list-style     : none;
+}
+
+.nav-menu a {
+  height: 40px;
+  display: inline-block;
+  line-height: 40px;
+  width: 100%;
+}
+
+.nav-menu a:link {
+  transition : 0.25s ease-in-out;
+}
+
+.nav-menu a:hover::before {
+  background-color : rgb(100, 100, 100);
+}
+
+.nav-menu li {
+  transition : 0.25s ease-in-out;
+}
+
+.nav-menu li:not(:first-child) {
+  margin-top : 50px;
+}
+
+.nav-menu li:hover {
+  color     : rgb(100, 100, 100);
+  transform : translateX(-30px);
+}
+
+.nav-menu a::after {
+  content          : '';
+  position         : absolute;
+  top              : 49%;
+  width            : 0;
+  height           : 1px;
+  background       : rgb(100, 100, 100);
+  transform        : translateY(-50%);
+  transform-origin : left;
+  transition       : 0.25s ease-in-out;
+}
+
+.nav-menu li:only-child {
+  background-color : red;
+}
+
+.nav-menu li:not(.active) a:hover::after {
+  width : 30px;
+}
+
+.nav-menu li.active:hover {
+  transform : none;
+}
+
+.nav-menu li.active a:hover {
+  cursor : default;
+}
+
+.nav-menu>.active {
+  color           : gray;
+  text-decoration : none;
+}
+
+#logo:not(.active) {
+  opacity    : 0.8;
+  transition : 0.25s ease-in-out;
+}
+
+#logo:hover::before {
+  height : 0;
+}
+
+#logo:hover {
+  opacity : 1;
+}
+
+#logo-img {
+  margin-right : 10px;
+  margin-bottom: 10px;
+}
+
+.my-cv {
+  margin-top : 50px;
+}
+
+.my-cv::after {
+  content        : 'Check out my resume!';
+  display        : inline;
+  left           : -100px;
+  opacity        : 0;
+  text-transform : uppercase;
+  font-size      : 0.75em;
+  letter-spacing : -3px;
+  transition     : 0.25s ease-in-out;
+}
+
+.my-cv:hover::after {
+  left           : 10px;
+  opacity        : 1;
+  letter-spacing : 3px;
+}
+
+.my-cv img {
+  vertical-align : middle;
+}
+
+.name-logo {
+  position  : absolute;
+  bottom    : 10%;
+  left      : 50%;
+  transform : translateX(-50%);
+}

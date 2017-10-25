@@ -1,0 +1,95 @@
+@-webkit-keyframes fade-in-right {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateX(70px);
+    transform         : translateX(70px);
+  }
+
+  100% {
+    opacity           : 1;
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+}
+
+@keyframes fade-in-right {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateX(70px);
+    transform         : translateX(70px);
+  }
+
+  100% {
+    opacity           : 1;
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+}
+
+@-webkit-keyframes fade-out-left {
+  0% {
+    opacity           : 1;
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+
+  100% {
+    opacity           : 0;
+    -webkit-transform : translateX(-70px);
+    transform         : translateX(-70px);
+  }
+}
+
+@keyframes fade-out-left {
+  0% {
+    opacity           : 1;
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+
+  100% {
+    opacity           : 0;
+    -webkit-transform : translateX(-70px);
+    transform         : translateX(-70px);
+  }
+}
+
+@-webkit-keyframes changing-gradient {
+  0% {
+    background-position : 50% 0%;
+  }
+
+  50% {
+    background-position : 50% 100%;
+  }
+
+  100% {
+    background-position : 50% 0%;
+  }
+}
+
+@keyframes changing-gradient {
+  0% {
+    background-position : 50% 0%;
+  }
+
+  50% {
+    background-position : 50% 100%;
+  }
+
+  100% {
+    background-position : 50% 0%;
+  }
+}
+
+/* Dynamical classes */
+
+.fade-out-left {
+  -webkit-animation : fade-out-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation         : fade-out-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.fade-in-right {
+  -webkit-animation : fade-in-right 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation         : fade-in-right 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
